@@ -10,6 +10,17 @@ void setup() {
   serialBT.begin("Esp32-BT2");
   pinMode(led,OUTPUT);
 
+  // Initialize Bluetooth with a custom name
+  if (!serialBT.begin("Esp32-BT2")) {
+    Serial.println("An error occurred initializing Bluetooth");
+  } else {
+    Serial.println("Bluetooth initialized successfully");
+  }
+
+  String btAddress = serialBT.getBtAddressString();
+    Serial.print("Bluetooth MAC Address: ");
+    Serial.println(btAddress);
+
 }
 
 void fastBlink(){
